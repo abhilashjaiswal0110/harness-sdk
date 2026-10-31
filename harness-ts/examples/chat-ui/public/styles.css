@@ -1,0 +1,253 @@
+:root {
+  --green: #0b7a3e;
+  --green-soft: #e8f4ec;
+  --ink: #111;
+  --muted: #6b6b6b;
+  --line: #d9d9d9;
+  --panel: #f6f6f4;
+  --danger: #b42318;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+  --sans: -apple-system, 'Segoe UI', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: #fff;
+}
+
+code,
+pre,
+button,
+input,
+textarea,
+label {
+  font-family: var(--mono);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-top: 3px solid var(--green);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: var(--mono);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--green);
+}
+
+.brand span {
+  color: #a3501c;
+  letter-spacing: 0;
+}
+
+.model {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.model label {
+  color: var(--muted);
+}
+
+.model input {
+  width: 18rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+button {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+button.ghost {
+  background: #fff;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+button.danger {
+  color: var(--danger);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.log {
+  overflow-y: auto;
+  padding: 1.5rem max(1.5rem, calc((100% - 52rem) / 2));
+}
+
+.intro h1 {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.intro p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.warn {
+  padding: 0.6rem 0.8rem;
+  border-left: 3px solid #d97706;
+  background: #fff7ed;
+  color: var(--ink) !important;
+}
+
+.msg {
+  margin: 1.25rem 0;
+  line-height: 1.55;
+}
+
+.msg.user {
+  margin-left: auto;
+  max-width: 80%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 12px;
+  background: var(--green-soft);
+  white-space: pre-wrap;
+}
+
+.msg.agent pre {
+  overflow-x: auto;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: var(--panel);
+  font-size: 0.85rem;
+}
+
+.msg.agent :not(pre) > code {
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  background: var(--panel);
+  font-size: 0.9em;
+}
+
+.msg.error {
+  color: var(--danger);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.thinking,
+.tool {
+  margin: 0.5rem 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.82rem;
+}
+
+.thinking summary,
+.tool summary {
+  padding: 0.4rem 0.7rem;
+  font-family: var(--mono);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.thinking > div {
+  padding: 0 0.7rem 0.6rem;
+  color: var(--muted);
+  white-space: pre-wrap;
+}
+
+.tool pre {
+  margin: 0;
+  padding: 0.6rem 0.7rem;
+  border-top: 1px solid var(--line);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.tool.running summary::after {
+  content: ' …';
+}
+
+.tool.error summary {
+  color: var(--danger);
+}
+
+.approval {
+  margin: 0.75rem 0;
+  padding: 0.8rem;
+  border: 1px solid #d97706;
+  border-radius: 8px;
+  background: #fffbeb;
+}
+
+.approval-title {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #92400e;
+}
+
+.approval-prompt {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.82rem;
+}
+
+.approval-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.approval.answered .approval-actions {
+  display: none;
+}
+
+.composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding: 0.9rem max(1.5rem, calc((100% - 52rem) / 2));
+  border-top: 1px solid var(--line);
+}
+
+.composer textarea {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+.composer textarea:focus,
+.model input:focus {
+  outline: 2px solid var(--green);
+  outline-offset: -1px;
+}

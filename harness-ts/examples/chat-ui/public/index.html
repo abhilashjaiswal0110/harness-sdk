@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Strands harness</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="bar">
+      <div class="brand">STRANDS <span>/harness</span></div>
+      <form id="model-form" class="model">
+        <label for="model">model</label>
+        <input id="model" list="models" spellcheck="false" autocomplete="off" />
+        <datalist id="models"></datalist>
+        <button type="submit" class="ghost">new chat</button>
+      </form>
+    </header>
+
+    <main id="log" class="log" aria-live="polite">
+      <section class="intro">
+        <h1>The agent works in <code id="workspace">…</code></h1>
+        <p>
+          It can read and write files there, run shell commands, and fetch web pages. Anything that can change your
+          machine asks for approval first.
+        </p>
+        <p id="key-warning" class="warn" hidden>
+          No <code>ANTHROPIC_API_KEY</code> found. Add it to <code>.env</code> and restart, or pick an
+          <code>ollama/…</code> model to stay fully local.
+        </p>
+      </section>
+    </main>
+
+    <form id="composer" class="composer">
+      <textarea
+        id="input"
+        rows="2"
+        placeholder="Ask the agent to do something…  (Enter to send, Shift+Enter for a newline)"
+      ></textarea>
+      <button id="send" type="submit">send</button>
+      <button id="stop" type="button" class="ghost" hidden>stop</button>
+    </form>
+
+    <template id="approval-template">
+      <div class="approval">
+        <div class="approval-title">approval needed</div>
+        <pre class="approval-prompt"></pre>
+        <div class="approval-actions">
+          <button data-answer="y">approve</button>
+          <button data-answer="t" class="ghost">always allow this tool</button>
+          <button data-answer="n" class="ghost danger">deny</button>
+        </div>
+      </div>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
