@@ -1,0 +1,26 @@
+{
+  "name": "harness-chat-ui-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "A local browser chat UI for the Strands harness",
+  "scripts": {
+    "start": "tsx src/server.ts",
+    "dev": "tsx watch src/server.ts",
+    "type-check": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.109.1",
+    "@strands-agents/harness": "^0.3.3",
+    "@strands-agents/sdk": "^1.23.0",
+    "openai": "^6.49.0",
+    "tsx": "^4.23.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  }
+}
